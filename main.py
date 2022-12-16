@@ -41,6 +41,7 @@ while True: #make a loop
         with open(file_path, 'r') as file:
             content = file.read()
             if word in content: #if it finds the ip in the text file it will skip it
+                print("SCANNED ", end='')
                 pass
             else:
                 save_response.write(str(ip) + ":" + str(port))
@@ -48,7 +49,9 @@ while True: #make a loop
                     pinger = Server(host=ip, port=port) #you ping the server
                     response = pinger.get_status() #and get the response
                     save_response.write(str(response) + "\n" + "\n")
+                    print("WORKED ", end='')
                 except:
+                    print("FAILED ", end='')
                     save_response.write(" FAILED" + "\n" + "\n") #when the ip is not reachable, it will continue
                     pass
 
